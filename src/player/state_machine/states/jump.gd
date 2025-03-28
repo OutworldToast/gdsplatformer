@@ -1,4 +1,4 @@
-extends State
+extends Airborne
 class_name Jump
 
 func enter() -> void:
@@ -6,12 +6,7 @@ func enter() -> void:
 
 func physics_update(delta) -> void:
 
-    super(delta)
-
+    move(get_direction())
     player.velocity += player.get_gravity() * delta
 
-    if player.is_on_floor():
-        if Input.get_axis("move_left", "move_right"):
-            state_machine.change_state("walk")
-        else:
-            state_machine.change_state("idle")
+    check_landing("walk")

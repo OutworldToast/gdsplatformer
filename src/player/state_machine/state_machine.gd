@@ -12,7 +12,7 @@ var states: Dictionary[String, State] = {
     "airborne": Airborne.new()
 }
 
-var current_state: State = states["jump"]:
+var current_state: State = states["airborne"]:
     set(value):
         current_state.exit()
         current_state = value
