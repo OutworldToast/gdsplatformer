@@ -1,8 +1,11 @@
 extends State
-class_name Jump
+class_name Airborne
 
 func enter() -> void:
     player.sprite.play("jump")
+
+func check_land(_direction_state_name: String, _idle_state_name: String) -> void:
+    pass
 
 func physics_update(delta) -> void:
 

@@ -7,7 +7,9 @@ var states: Dictionary[String, State] = {
     "walk": Walk.new(),
     "idle": Idle.new(),
     "run": Run.new(),
-    "jump": Jump.new()
+    "jump": Jump.new(),
+    "leap": Leap.new(),
+    "airborne": Airborne.new()
 }
 
 var current_state: State = states["jump"]:
@@ -26,6 +28,7 @@ func _init(player_: Player) -> void:
 func change_state(new_state_name: String):
     if new_state_name in states:
         current_state = states[new_state_name]
+        player.state_label.text = new_state_name.to_upper()
 
 func physics_update(delta: float) -> void:
     current_state.physics_update(delta)

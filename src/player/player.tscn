@@ -1,7 +1,15 @@
-[gd_scene load_steps=27 format=3 uid="uid://by016eiu6vxwd"]
+[gd_scene load_steps=29 format=3 uid="uid://by016eiu6vxwd"]
 
 [ext_resource type="Script" uid="uid://drwnkdqv6qlq2" path="res://src/player/player.gd" id="1_blpm4"]
 [ext_resource type="Texture2D" uid="uid://dqigaoljdkonm" path="res://assets/dino_spritesheet.png" id="1_qnd6i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o822w"]
+atlas = ExtResource("1_qnd6i")
+region = Rect2(264, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x42xx"]
+atlas = ExtResource("1_qnd6i")
+region = Rect2(288, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rxibo"]
 atlas = ExtResource("1_qnd6i")
@@ -23,17 +31,17 @@ region = Rect2(72, 0, 24, 24)
 atlas = ExtResource("1_qnd6i")
 region = Rect2(240, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o822w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyld2"]
 atlas = ExtResource("1_qnd6i")
-region = Rect2(264, 0, 24, 24)
+region = Rect2(432, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x42xx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwsmr"]
 atlas = ExtResource("1_qnd6i")
-region = Rect2(288, 0, 24, 24)
+region = Rect2(504, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l271a"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcdrv"]
 atlas = ExtResource("1_qnd6i")
-region = Rect2(312, 0, 24, 24)
+region = Rect2(528, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ydov"]
 atlas = ExtResource("1_qnd6i")
@@ -90,6 +98,17 @@ region = Rect2(216, 0, 24, 24)
 [sub_resource type="SpriteFrames" id="SpriteFrames_p036a"]
 animations = [{
 "frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_o822w")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_x42xx")
+}],
+"loop": false,
+"name": &"airborne",
+"speed": 10.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rxibo")
 }, {
@@ -107,20 +126,31 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_jiejy")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": SubResource("AtlasTexture_o822w")
 }, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_x42xx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l271a")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_oyld2")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_vwsmr")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_jcdrv")
+}],
+"loop": false,
+"name": &"leap",
 "speed": 10.0
 }, {
 "frames": [{
@@ -186,9 +216,8 @@ script = ExtResource("1_blpm4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_p036a")
-animation = &"idle"
+animation = &"airborne"
 autoplay = "idle"
-frame_progress = 0.835042
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 0.25)
@@ -201,5 +230,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouth"]
 shape = SubResource("CircleShape2D_2u7hp")
 debug_color = Color(0.948536, 3.27289e-06, 0.577847, 0.42)
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -38.0
+offset_top = -36.0
+offset_right = 39.0
+offset_bottom = -13.0
+text = "RUN"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="Mouth" to="." method="_on_mouth_area_entered"]
