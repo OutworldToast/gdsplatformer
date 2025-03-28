@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dptqqwn64eo1x"]
+
+[ext_resource type="Texture2D" uid="uid://g015xhs8ixry" path="res://assets/food_onion.png" id="1_3n576"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b52y"]
+size = Vector2(16, 16)
+
+[node name="Food" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_3n576")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2b52y")
