@@ -10,10 +10,10 @@ func physics_update(_delta) -> void:
 
 	if get_input_direction():
 		if Input.is_action_pressed("run"):
-			state_machine.change_state("run")
+			request_state.emit("run")
 		else:
-			state_machine.change_state("walk")
+			request_state.emit("walk")
 
 	if Input.is_action_just_pressed("jump"):
 		player.jump(false)
-		state_machine.change_state("jump")
+		request_state.emit("jump")

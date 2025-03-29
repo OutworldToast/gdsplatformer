@@ -7,9 +7,9 @@ func enter() -> void:
 func check_landing(direction_state_name: String, idle_state_name: String = "idle") -> void:
     if player.is_on_floor():
         if Input.get_axis("move_left", "move_right"):
-            state_machine.change_state(direction_state_name)
+            request_state.emit(direction_state_name)
         else:
-            state_machine.change_state(idle_state_name)
+            request_state.emit(idle_state_name)
 
 func physics_update(delta) -> void:
 
@@ -17,11 +17,12 @@ func physics_update(delta) -> void:
 
     player.velocity += player.get_gravity() * delta
     
+    ## it might be possible to fly if you jump on the same tick you hit the ground
     if Input.is_action_just_pressed("jump"):
         player.jump(false)
-        state_machine.change_state("jump")
+        request_state.emit("jump")
 
     if player.is_on_wall():
-        state_machine.change_state("cling")
+        request_state.emit("cling")
 
     check_landing("walk")

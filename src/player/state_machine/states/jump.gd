@@ -10,6 +10,6 @@ func physics_update(delta) -> void:
     player.velocity += player.get_gravity() * delta
 
     if player.is_on_wall():
-        state_machine.change_state("cling")
+        request_state.emit("cling")
 
     check_landing("walk")

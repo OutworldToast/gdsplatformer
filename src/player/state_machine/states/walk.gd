@@ -9,14 +9,14 @@ func physics_update(_delta):
     super(_delta)
 
     if Input.is_key_pressed(KEY_SHIFT):
-        state_machine.change_state("run")
+        request_state.emit("run")
 
     if not get_input_direction():
-        state_machine.change_state("idle")
+        request_state.emit("idle")
 
     if Input.is_action_just_pressed("jump"):
         player.jump(false)
-        state_machine.change_state("jump")
+        request_state.emit("jump")
 
     if not player.is_on_floor():
-        state_machine.change_state("airborne")
+        request_state.emit("airborne")

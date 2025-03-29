@@ -1,8 +1,10 @@
 extends Node
 class_name State
 
+@warning_ignore("unused_signal")
+signal request_state(new_state_name: String)
+
 var player: Player
-var state_machine: StateMachine
 
 func enter() -> void:
     pass

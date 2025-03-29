@@ -22,13 +22,13 @@ func physics_update(delta) -> void:
     player.velocity += player.get_gravity() * delta
 
     if player.is_on_wall():
-        state_machine.change_state("cling")
+        request_state.emit("cling")
 
     check_landing("walk")
 
     # if hang time has ended and player is holding direction, exit state
     if movement_allowed and get_input_direction():
-        state_machine.change_state("jump")
+        request_state.emit("jump")
 
 func _on_wall_jump_hang_timer_timeout() -> void:
     # allow movement after hang period has ended

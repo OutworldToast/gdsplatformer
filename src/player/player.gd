@@ -31,6 +31,7 @@ func _ready() -> void:
 	wall_jump_hang_timer.wait_time = WALL_JUMP_HANG_TIME
 	add_child(wall_jump_hang_timer)
 
+	state_machine.state_updated.connect(_on_state_updated)
 
 func jump(is_running: bool) -> void:
 
@@ -51,3 +52,6 @@ func _on_mouth_area_entered(area: Area2D) -> void:
 	print('eat da food! ', area.name)
 	area.queue_free()
 	eaten_food.emit()
+
+func _on_state_updated(new_state_name: String) -> void:
+	state_label.text = new_state_name.to_upper()

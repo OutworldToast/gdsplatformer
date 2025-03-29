@@ -1,8 +1,8 @@
 extends Node
 class_name StateMachine
 
+signal state_updated(new_state_name: String)
 
-var player: Player
 var states: Dictionary[String, State] = {
 	"walk": Walk.new(),
 	"idle": Idle.new(),
@@ -22,16 +22,21 @@ var current_state: State = states["airborne"]:
 		current_state.enter()
 
 func _init(player_: Player) -> void:
-	player = player_
 
 	for state in states.values():
-		state.player = player
-		state.state_machine = self
+		state.player = player_
+		state.request_state.connect(_on_state_change_requested)
 
 func change_state(new_state_name: String):
 	if new_state_name in states:
 		current_state = states[new_state_name]
-		player.state_label.text = new_state_name.to_upper()
+
+		## cannot be easily in current_state setter, as it does not have the name anymore
+		## as such, it is possible for this not to be emitted if the state is updated directly
+		state_updated.emit(new_state_name)
 
 func physics_update(delta: float) -> void:
 	current_state.physics_update(delta)
+
+func _on_state_change_requested(new_state_name: String):
+	change_state(new_state_name)

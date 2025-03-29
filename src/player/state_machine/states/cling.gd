@@ -43,7 +43,7 @@ func physics_update(delta):
 	player.velocity += player.CLING_MODIFIER * player.get_gravity() * delta
 
 	if not player.is_on_wall():
-		state_machine.change_state("airborne")
+		request_state.emit("airborne")
 
 	if Input.is_action_just_pressed("jump"):
 		# check if player is holding run input
@@ -52,7 +52,7 @@ func physics_update(delta):
 		# leap if true, else jump
 		var next_state_name := "leap" if holding_run else "wall_jump"
 		var modifier := player.RUN_MODIFIER if holding_run else 1.0
-		state_machine.change_state(next_state_name)
+		request_state.emit(next_state_name)
 		player.jump(holding_run)
 
 		# move away from the wall
@@ -65,4 +65,4 @@ func physics_update(delta):
 
 func _on_detach_buffer_timer_timeout() -> void:
 	move(buffered_direction)
-	state_machine.change_state("airborne")
+	request_state.emit("airborne")
