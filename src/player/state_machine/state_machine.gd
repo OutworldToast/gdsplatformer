@@ -15,8 +15,10 @@ var states: Dictionary[String, State] = {
 	"wall_jump": WallJump.new()
 }
 
+var starting_state: State = states["airborne"]
+
 # use setter for exit/enter logic, to ensure behaviour even if variable is set directly
-var current_state: State = states["airborne"]:
+var current_state: State = starting_state:
 	set(value):
 		current_state.exit()
 		current_state = value
@@ -32,6 +34,7 @@ func physics_update(delta: float) -> void:
 	current_state.physics_update(delta)
 
 func _on_state_change_requested(new_state_name: String):
+
 	if new_state_name in states:
 		current_state = states[new_state_name]
 

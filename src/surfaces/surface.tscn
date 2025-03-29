@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxyd2hpc21kx6"]
+
+[ext_resource type="PackedScene" uid="uid://c1tgs73c50bh5" path="res://src/surfaces/surface_block.tscn" id="1_yq8s6"]
+
+[node name="surface" type="Node2D"]
+
+[node name="SurfaceBlock" parent="." instance=ExtResource("1_yq8s6")]
+
+[node name="SurfaceBlock2" parent="." instance=ExtResource("1_yq8s6")]
+position = Vector2(-148, 0)
+
+[node name="SurfaceBlock3" parent="." instance=ExtResource("1_yq8s6")]
+position = Vector2(-296, 0)
+
+[node name="SurfaceBlock4" parent="." instance=ExtResource("1_yq8s6")]
+position = Vector2(-443, 0)
+
+[node name="SurfaceBlock5" parent="." instance=ExtResource("1_yq8s6")]
+position = Vector2(145, 0)
+
+[node name="SurfaceBlock6" parent="." instance=ExtResource("1_yq8s6")]
+position = Vector2(292, 0)
+
+[node name="SurfaceBlock7" parent="." instance=ExtResource("1_yq8s6")]
+position = Vector2(439, 0)

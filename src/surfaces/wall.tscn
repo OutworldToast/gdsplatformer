@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce5dmnccfrvd8"]
+
+[ext_resource type="PackedScene" uid="uid://c1tgs73c50bh5" path="res://src/surfaces/surface_block.tscn" id="1_m50mf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m50mf"]
+size = Vector2(145, 867)
+
+[node name="Wall" instance=ExtResource("1_m50mf")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_m50mf")
+
+[node name="Polygon2D" parent="." index="1"]
+position = Vector2(-76.7, -1305)
+scale = Vector2(0.4625, 6.38971)
+polygon = PackedVector2Array(328, 136, 8, 136, 8, 202, 8, 272, 167.41, 272, 328, 272, 328, 203.699)

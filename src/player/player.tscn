@@ -226,7 +226,6 @@ animations = [{
 size = Vector2(15, 17.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2u7hp"]
-radius = 19.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -247,6 +246,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouth"]
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_2u7hp")
 debug_color = Color(0.948536, 3.27289e-06, 0.577847, 0.42)
 
@@ -255,7 +255,7 @@ offset_left = -35.0
 offset_top = -29.0
 offset_right = 42.0
 offset_bottom = -6.0
-text = "RUN"
+text = "AIRBORNE"
 horizontal_alignment = 1
 vertical_alignment = 1
 

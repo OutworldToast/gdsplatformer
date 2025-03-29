@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://yan650d4vg3r"]
+
+[ext_resource type="Script" uid="uid://hs3vjnihdc70" path="res://src/levels/level.gd" id="1_mbxti"]
+[ext_resource type="Script" uid="uid://cnl06hgj5red1" path="res://src/levels/camera_2d.gd" id="1_olomi"]
+[ext_resource type="PackedScene" uid="uid://by016eiu6vxwd" path="res://src/player/player.tscn" id="1_ue7o4"]
+[ext_resource type="PackedScene" uid="uid://cxyd2hpc21kx6" path="res://src/surfaces/surface.tscn" id="2_a8icf"]
+[ext_resource type="PackedScene" uid="uid://dptqqwn64eo1x" path="res://src/levels/Food.tscn" id="3_gsqgy"]
+[ext_resource type="PackedScene" uid="uid://ce5dmnccfrvd8" path="res://src/surfaces/wall.tscn" id="6_1brxq"]
+[ext_resource type="PackedScene" uid="uid://c1tgs73c50bh5" path="res://src/surfaces/surface_block.tscn" id="7_plupk"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_mbxti")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(160, 88)
+position_smoothing_speed = 2.0
+script = ExtResource("1_olomi")
+target = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("1_ue7o4")]
+position = Vector2(152, 64)
+collision_mask = 6
+
+[node name="Foodstuffs" type="Node2D" parent="."]
+
+[node name="Food" parent="Foodstuffs" instance=ExtResource("3_gsqgy")]
+position = Vector2(292, 60)
+
+[node name="Food5" parent="Foodstuffs" instance=ExtResource("3_gsqgy")]
+position = Vector2(-613, 432)
+
+[node name="Food6" parent="Foodstuffs" instance=ExtResource("3_gsqgy")]
+position = Vector2(-160, 826)
+
+[node name="Food7" parent="Foodstuffs" instance=ExtResource("3_gsqgy")]
+position = Vector2(324, 751)
+
+[node name="Food2" parent="Foodstuffs" instance=ExtResource("3_gsqgy")]
+position = Vector2(192, 297)
+
+[node name="Food3" parent="Foodstuffs" instance=ExtResource("3_gsqgy")]
+position = Vector2(-4, 447)
+
+[node name="Food4" parent="Foodstuffs" instance=ExtResource("3_gsqgy")]
+position = Vector2(594, -120)
+
+[node name="Surfaces" type="Node2D" parent="."]
+
+[node name="StaticBody2D" parent="Surfaces" instance=ExtResource("2_a8icf")]
+position = Vector2(160, 210)
+
+[node name="StaticBody2D3" parent="Surfaces" instance=ExtResource("2_a8icf")]
+position = Vector2(472, 649)
+
+[node name="Wall" parent="Surfaces" instance=ExtResource("6_1brxq")]
+position = Vector2(912, 150)
+
+[node name="Wall2" parent="Surfaces" instance=ExtResource("6_1brxq")]
+position = Vector2(94, 703)
+
+[node name="SurfaceBlock" parent="Surfaces" instance=ExtResource("7_plupk")]
+position = Vector2(-513, 341)
+
+[node name="SurfaceBlock4" parent="Surfaces" instance=ExtResource("7_plupk")]
+position = Vector2(407, 1292)
+
+[node name="SurfaceBlock5" parent="Surfaces" instance=ExtResource("7_plupk")]
+position = Vector2(-202, 1288)
+
+[node name="SurfaceBlock3" parent="Surfaces" instance=ExtResource("7_plupk")]
+position = Vector2(765, -215)
+
+[node name="SurfaceBlock2" parent="Surfaces" instance=ExtResource("7_plupk")]
+position = Vector2(-193, 439)
+
+[connection signal="eaten_food" from="Player" to="." method="_on_player_eaten_food"]

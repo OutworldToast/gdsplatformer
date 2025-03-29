@@ -17,11 +17,12 @@ const JUMP_VELOCITY := -400.0
 const LEAP_MODIFIER := 0.8
 
 const CLING_MODIFIER := 0.3
-const CLING_DETACH_BUFFER_TIME := 0.2
+const CLING_DETACH_BUFFER_TIME := 0.1
 
 const WALL_JUMP_HANG_TIME := 0.15
 
 var state_machine := StateMachine.new(self)
+
 
 func _ready() -> void:
 	## should probably just be nodes in player
@@ -49,7 +50,6 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_mouth_area_entered(area: Area2D) -> void:
-	print('eat da food! ', area.name)
 	area.queue_free()
 	eaten_food.emit()
 
