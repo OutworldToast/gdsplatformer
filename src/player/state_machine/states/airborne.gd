@@ -21,4 +21,7 @@ func physics_update(delta) -> void:
         player.jump(false)
         state_machine.change_state("jump")
 
+    if player.is_on_wall():
+        state_machine.change_state("cling")
+
     check_landing("walk")

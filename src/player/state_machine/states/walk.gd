@@ -17,3 +17,6 @@ func physics_update(_delta):
     if Input.is_action_just_pressed("jump"):
         player.jump(false)
         state_machine.change_state("jump")
+
+    if not player.is_on_floor():
+        state_machine.change_state("airborne")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://by016eiu6vxwd"]
+[gd_scene load_steps=31 format=3 uid="uid://by016eiu6vxwd"]
 
 [ext_resource type="Script" uid="uid://drwnkdqv6qlq2" path="res://src/player/player.gd" id="1_blpm4"]
 [ext_resource type="Texture2D" uid="uid://dqigaoljdkonm" path="res://assets/dino_spritesheet.png" id="1_qnd6i"]
@@ -10,6 +10,14 @@ region = Rect2(264, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x42xx"]
 atlas = ExtResource("1_qnd6i")
 region = Rect2(288, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l271a"]
+atlas = ExtResource("1_qnd6i")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrerp"]
+atlas = ExtResource("1_qnd6i")
+region = Rect2(120, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rxibo"]
 atlas = ExtResource("1_qnd6i")
@@ -107,6 +115,17 @@ animations = [{
 "loop": false,
 "name": &"airborne",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l271a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrerp")
+}],
+"loop": true,
+"name": &"cling",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -216,7 +235,7 @@ script = ExtResource("1_blpm4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_p036a")
-animation = &"airborne"
+animation = &"cling"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -232,10 +251,10 @@ shape = SubResource("CircleShape2D_2u7hp")
 debug_color = Color(0.948536, 3.27289e-06, 0.577847, 0.42)
 
 [node name="StateLabel" type="Label" parent="."]
-offset_left = -38.0
-offset_top = -36.0
-offset_right = 39.0
-offset_bottom = -13.0
+offset_left = -35.0
+offset_top = -29.0
+offset_right = 42.0
+offset_bottom = -6.0
 text = "RUN"
 horizontal_alignment = 1
 vertical_alignment = 1

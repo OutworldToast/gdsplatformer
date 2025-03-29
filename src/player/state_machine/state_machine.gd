@@ -9,7 +9,8 @@ var states: Dictionary[String, State] = {
     "run": Run.new(),
     "jump": Jump.new(),
     "leap": Leap.new(),
-    "airborne": Airborne.new()
+    "airborne": Airborne.new(),
+    "cling": Cling.new()
 }
 
 var current_state: State = states["airborne"]:
