@@ -8,7 +8,7 @@ func physics_update(_delta) -> void:
 
 	super(_delta)
 
-	if get_direction():
+	if get_input_direction():
 		if Input.is_action_pressed("run"):
 			state_machine.change_state("run")
 		else:

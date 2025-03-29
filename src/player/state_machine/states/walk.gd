@@ -11,7 +11,7 @@ func physics_update(_delta):
     if Input.is_key_pressed(KEY_SHIFT):
         state_machine.change_state("run")
 
-    if not get_direction():
+    if not get_input_direction():
         state_machine.change_state("idle")
 
     if Input.is_action_just_pressed("jump"):

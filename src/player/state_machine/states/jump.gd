@@ -6,7 +6,7 @@ func enter() -> void:
 
 func physics_update(delta) -> void:
 
-    move(get_direction())
+    move(get_input_direction())
     player.velocity += player.get_gravity() * delta
 
     if player.is_on_wall():
