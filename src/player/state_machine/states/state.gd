@@ -6,6 +6,9 @@ signal request_state(new_state_name: String)
 
 var player: Player
 
+## could be nice to add 'name', set by state_machine
+## could be used to abstract playing the animation?
+
 func enter() -> void:
     pass
 

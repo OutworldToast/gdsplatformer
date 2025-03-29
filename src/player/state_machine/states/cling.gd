@@ -25,6 +25,7 @@ func check_detach() -> void:
 		# stops timer if no direction is held or direction is facing wall
 		player.detach_buffer_timer.stop()
 
+# override flip behaviour called in the move function of state
 func flip(direction: float) -> void:
 
 	var steering: float = (sign(get_input_direction()) != 0)

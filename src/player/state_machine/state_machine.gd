@@ -3,6 +3,7 @@ class_name StateMachine
 
 signal state_updated(new_state_name: String)
 
+## would be nice to use const NAMES dictionary
 var states: Dictionary[String, State] = {
 	"walk": Walk.new(),
 	"idle": Idle.new(),
@@ -27,16 +28,13 @@ func _init(player_: Player) -> void:
 		state.player = player_
 		state.request_state.connect(_on_state_change_requested)
 
-func change_state(new_state_name: String):
+func physics_update(delta: float) -> void:
+	current_state.physics_update(delta)
+
+func _on_state_change_requested(new_state_name: String):
 	if new_state_name in states:
 		current_state = states[new_state_name]
 
 		## cannot be easily in current_state setter, as it does not have the name anymore
 		## as such, it is possible for this not to be emitted if the state is updated directly
 		state_updated.emit(new_state_name)
-
-func physics_update(delta: float) -> void:
-	current_state.physics_update(delta)
-
-func _on_state_change_requested(new_state_name: String):
-	change_state(new_state_name)
