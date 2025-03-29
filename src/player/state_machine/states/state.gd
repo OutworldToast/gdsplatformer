@@ -13,9 +13,7 @@ func exit():
 func get_direction() -> float:
     return Input.get_axis("move_left", "move_right")
 
-func move(direction: float, is_running: bool = false) -> void:
-
-    var modifier := 1.0 if not is_running else player.RUN_MODIFIER
+func move(direction: float, modifier := 1.0) -> void:
 
     if direction:
         player.velocity.x = direction * player.SPEED * modifier

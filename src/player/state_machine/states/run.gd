@@ -8,7 +8,7 @@ func enter() -> void:
 func physics_update(_delta):
 
     ## kind of sloppy, should prob use super() somehow
-    move(get_direction(), true)
+    move(get_direction(), player.RUN_MODIFIER)
 
     if not Input.is_key_pressed(KEY_SHIFT):
         state_machine.change_state("walk")
