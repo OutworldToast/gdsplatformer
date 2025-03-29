@@ -34,6 +34,8 @@ func _ready() -> void:
 
 func jump(is_running: bool) -> void:
 
+	## should maybe be in state for consistency
+	## should probably use modifier as variable, similar to move
 	var modifier := 1.0 if not is_running else LEAP_MODIFIER
 
 	velocity.y = JUMP_VELOCITY * modifier

@@ -14,6 +14,7 @@ var states: Dictionary[String, State] = {
 	"wall_jump": WallJump.new()
 }
 
+# use setter for exit/enter logic, to ensure behaviour even if variable is set directly
 var current_state: State = states["airborne"]:
 	set(value):
 		current_state.exit()
