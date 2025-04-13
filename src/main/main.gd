@@ -1,9 +1,13 @@
 extends Node2D
 
+
 @onready var ingame_ui: UI = $CanvasLayer/IngameUI
 @onready var victory_label: Label = $CanvasLayer/IngameUI/Middle/VictoryLabel
 
 @onready var level_select_menu: Control = $CanvasLayer/LevelSelectMenu
+
+
+var progress_data: ProgressData
 
 var level_button_prefab: PackedScene = preload("uid://cyi1wfs0kgb1j")
 
@@ -32,7 +36,12 @@ var last_level_name: String
 
 func _ready() -> void:
 
-	last_level_name = "level_2"
+	progress_data = ProgressData.load_or_create()
+
+	## just printing the progress for now, should be displayed somewhere
+	print_debug(progress_data.progress)
+
+	last_level_name = progress_data.last_level_name
 
 	for level_name in levels:
 		var level_button = level_button_prefab.instantiate() as LevelButton
@@ -41,6 +50,7 @@ func _ready() -> void:
 
 		level_button.selected.connect(_on_level_selected)
 		$CanvasLayer/LevelSelectMenu/Levels.add_child(level_button)
+
 
 func unload_current_level() -> void:
 	if current_level:
@@ -59,6 +69,9 @@ func select_level(level_name: String) -> void:
 
 		victory_label.text = ""
 		ingame_ui.visible = true
+
+		progress_data.last_level_name = level_name
+		progress_data.save()
 
 func load_level(level_name: String) -> void:
 	current_level = levels[level_name].instantiate()
@@ -100,6 +113,10 @@ func _on_level_food_eaten_updated(new_amount: int, total: int) -> void:
 	var food_left = total - new_amount
 
 	set_ui_values(new_amount, food_left)
+
+	if new_amount > progress_data.progress[current_level_name]:
+		progress_data.progress[current_level_name] = new_amount
+		progress_data.save()
 
 func _on_level_selected(level_identifier: String) -> void:
 	select_level(level_identifier)
@@ -157,12 +174,10 @@ func _process(_delta: float) -> void:
 
 		## this logic should really be in the individual menus
 		# remove overlay if there is one
-		if $CanvasLayer/SettingsMenu.visible:
+		if $CanvasLayer/SettingsMenu.visible and current_level:
 			$CanvasLayer/SettingsMenu.visible = false
 		elif $CanvasLayer/LevelSelectMenu.visible and current_level:
 			$CanvasLayer/LevelSelectMenu.visible = false
-		elif $CanvasLayer/SettingsMenu.visible:
-			$CanvasLayer/SettingsMenu.visible = false
 
 
 		ingame_ui.handle_pause()

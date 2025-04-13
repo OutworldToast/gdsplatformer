@@ -76,7 +76,7 @@ func _on_resolution_selector_item_selected(index:int) -> void:
 func _on_vsync_button_toggled(toggled_on: bool) -> void:
 	var mode = DisplayServer.VSYNC_ENABLED if toggled_on else DisplayServer.VSYNC_DISABLED
 	DisplayServer.window_set_vsync_mode(mode)
-	print("VSync: %s" % DisplayServer.window_get_vsync_mode())
+	print_debug("VSync: %s" % DisplayServer.window_get_vsync_mode())
 
 
 func _on_remap_button_selected() -> void:

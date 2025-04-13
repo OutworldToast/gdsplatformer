@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProgressData" load_steps=2 format=3 uid="uid://bpcjhcg14enmr"]
+
+[ext_resource type="Script" uid="uid://cvp1n5oxtevsd" path="res://resources/progress_data.gd" id="1_cmeiu"]
+
+[resource]
+script = ExtResource("1_cmeiu")
+progress = Dictionary[String, int]({
+"level_1": 0,
+"level_2": 0
+})
+last_level_name = "level_1"
