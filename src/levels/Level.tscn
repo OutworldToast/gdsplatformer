@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://yan650d4vg3r"]
+[gd_scene load_steps=9 format=3 uid="uid://yan650d4vg3r"]
 
 [ext_resource type="Script" uid="uid://hs3vjnihdc70" path="res://src/levels/level.gd" id="1_mbxti"]
 [ext_resource type="Script" uid="uid://cnl06hgj5red1" path="res://src/levels/camera_2d.gd" id="1_olomi"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dptqqwn64eo1x" path="res://src/levels/Food.tscn" id="3_gsqgy"]
 [ext_resource type="PackedScene" uid="uid://ce5dmnccfrvd8" path="res://src/surfaces/wall.tscn" id="6_1brxq"]
 [ext_resource type="PackedScene" uid="uid://c1tgs73c50bh5" path="res://src/surfaces/surface_block.tscn" id="7_plupk"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bb400"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_mbxti")
@@ -19,7 +21,7 @@ target = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_ue7o4")]
 position = Vector2(152, 64)
-collision_mask = 6
+collision_mask = 14
 
 [node name="Foodstuffs" type="Node2D" parent="."]
 
@@ -73,4 +75,12 @@ position = Vector2(765, -215)
 [node name="SurfaceBlock2" parent="Surfaces" instance=ExtResource("7_plupk")]
 position = Vector2(-193, 439)
 
+[node name="Boundary" type="Area2D" parent="." groups=["boundaries"]]
+position = Vector2(104, 1514)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+shape = SubResource("WorldBoundaryShape2D_bb400")
+
 [connection signal="eaten_food" from="Player" to="." method="_on_player_eaten_food"]
+[connection signal="body_entered" from="Boundary" to="." method="_on_boundary_body_entered"]

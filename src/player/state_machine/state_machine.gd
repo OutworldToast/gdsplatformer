@@ -12,7 +12,10 @@ var states: Dictionary[String, State] = {
 	"leap": Leap.new(),
 	"airborne": Airborne.new(),
 	"cling": Cling.new(),
-	"wall_jump": WallJump.new()
+	"wall_jump": WallJump.new(),
+	"dead": Dead.new(),
+	"victorious": Victorious.new(),
+	"airborne_running": AirborneRunning.new(),
 }
 
 var starting_state: State = states["airborne"]

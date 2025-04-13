@@ -42,6 +42,16 @@ func jump(is_running: bool) -> void:
 
 	velocity.y = JUMP_VELOCITY * modifier
 
+func die() -> void:
+	# request the new state from the current state
+	# this ensures the label is also updated
+	state_machine.current_state.request_state.emit("dead")
+
+func celebrate() -> void:
+	# request the new state from the current state
+	# this ensures the label is also updated
+	state_machine.current_state.request_state.emit("victorious")
+
 func _physics_process(delta: float) -> void:
 
 	state_machine.physics_update(delta)
@@ -50,8 +60,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_mouth_area_entered(area: Area2D) -> void:
-	area.queue_free()
-	eaten_food.emit()
+	if area.is_in_group("eatable"):
+		area.queue_free()
+		eaten_food.emit()
 
 func _on_state_updated(new_state_name: String) -> void:
 	state_label.text = new_state_name.to_upper()

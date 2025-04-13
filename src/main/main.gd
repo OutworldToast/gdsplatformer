@@ -33,6 +33,7 @@ func set_ui_values(eaten: int, left: int) -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("respawn"):
 		load_level(current_level_name)
+		$CanvasLayer/UI/Middle/VictoryLabel.visible = false
 
 
 func _on_level_beaten() -> void:

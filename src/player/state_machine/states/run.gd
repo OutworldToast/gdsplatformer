@@ -21,4 +21,4 @@ func physics_update(_delta):
         request_state.emit("leap")
 
     if not player.is_on_floor():
-        request_state.emit("airborne")
+        request_state.emit("airborne_running")

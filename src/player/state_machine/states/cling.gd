@@ -65,5 +65,14 @@ func physics_update(delta):
 	check_landing("walk")
 
 func _on_detach_buffer_timer_timeout() -> void:
-	move(buffered_direction)
-	request_state.emit("airborne")
+
+	# get the right logic depending on whether the player is running
+	## TODO: fix transition to airborne running
+	## currently does not work due to airborne clinging for a moment after detaching
+	var is_running := Input.is_action_pressed("run") and false
+
+	var new_state_name := "airborne_running" if is_running else "airborne"
+	var move_modifier := player.RUN_MODIFIER if is_running else 1.0
+
+	move(buffered_direction, move_modifier)
+	request_state.emit(new_state_name)
