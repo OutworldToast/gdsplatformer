@@ -10,7 +10,7 @@ func physics_update(_delta):
     ## kind of sloppy, should prob use super() somehow
     move(get_input_direction(), player.RUN_MODIFIER)
 
-    if not Input.is_key_pressed(KEY_SHIFT):
+    if not Input.is_action_pressed("run"):
         request_state.emit("walk")
 
     if not get_input_direction():

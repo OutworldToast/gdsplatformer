@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcxcvlpyy1t3"]
+[gd_scene load_steps=5 format=3 uid="uid://bcxcvlpyy1t3"]
 
 [ext_resource type="PackedScene" uid="uid://qbp0xeyle5or" path="res://src/main/UI/elements/volume_slider.tscn" id="1_1tw7w"]
 [ext_resource type="Script" uid="uid://7djtmsb4spm0" path="res://src/main/UI/menus/settings_menu.gd" id="1_bxmrt"]
 [ext_resource type="PackedScene" uid="uid://cvckrscyldki3" path="res://src/main/UI/elements/selector.tscn" id="2_uf68x"]
+[ext_resource type="PackedScene" uid="uid://be84cqd8a2j4d" path="res://src/main/UI/elements/remap_button.tscn" id="4_o234w"]
 
 [node name="SettingsMenu" type="VBoxContainer"]
 anchors_preset = 15
@@ -71,6 +72,43 @@ slider_description = "SFX"
 [node name="RemapContainer" type="VBoxContainer" parent="SettingsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="JumpRemapButton" parent="SettingsContainer/RemapContainer" groups=["remap_buttons"] instance=ExtResource("4_o234w")]
+layout_mode = 2
+size_flags_horizontal = 3
+action_name = "Jump"
+action_identifier = "jump"
+
+[node name="RunRemapButton" parent="SettingsContainer/RemapContainer" groups=["remap_buttons"] instance=ExtResource("4_o234w")]
+layout_mode = 2
+size_flags_horizontal = 3
+action_name = "Run"
+action_identifier = "run"
+
+[node name="LeftRemapButton" parent="SettingsContainer/RemapContainer" groups=["remap_buttons"] instance=ExtResource("4_o234w")]
+layout_mode = 2
+size_flags_horizontal = 3
+action_name = "Left"
+action_identifier = "move_left"
+
+[node name="RightRemapButton" parent="SettingsContainer/RemapContainer" groups=["remap_buttons"] instance=ExtResource("4_o234w")]
+layout_mode = 2
+size_flags_horizontal = 3
+action_name = "Right"
+action_identifier = "move_right"
+
+[node name="PauseRemapButton" parent="SettingsContainer/RemapContainer" groups=["remap_buttons"] instance=ExtResource("4_o234w")]
+layout_mode = 2
+size_flags_horizontal = 3
+action_name = "Pause"
+action_identifier = "pause"
+
+[node name="RespawnRemapButton" parent="SettingsContainer/RemapContainer" groups=["remap_buttons"] instance=ExtResource("4_o234w")]
+layout_mode = 2
+size_flags_horizontal = 3
+action_name = "Respawn"
+action_identifier = "respawn"
 
 [node name="RightSideMargin" type="BoxContainer" parent="SettingsContainer"]
 layout_mode = 2
@@ -90,6 +128,11 @@ text = "Return"
 [connection signal="item_selected" from="SettingsContainer/WindowContainer/ResolutionSelector/Selector" to="." method="_on_resolution_selector_item_selected"]
 [connection signal="item_selected" from="SettingsContainer/WindowContainer/WindowSelector/Selector" to="." method="_on_window_selector_item_selected"]
 [connection signal="toggled" from="SettingsContainer/WindowContainer/VSyncButton" to="." method="_on_vsync_button_toggled"]
+[connection signal="selected" from="SettingsContainer/RemapContainer/RunRemapButton" to="." method="_on_remap_button_selected"]
+[connection signal="selected" from="SettingsContainer/RemapContainer/LeftRemapButton" to="." method="_on_remap_button_selected"]
+[connection signal="selected" from="SettingsContainer/RemapContainer/RightRemapButton" to="." method="_on_remap_button_selected"]
+[connection signal="selected" from="SettingsContainer/RemapContainer/PauseRemapButton" to="." method="_on_remap_button_selected"]
+[connection signal="selected" from="SettingsContainer/RemapContainer/RespawnRemapButton" to="." method="_on_remap_button_selected"]
 [connection signal="pressed" from="BottomButtonsContainer/ReturnButton" to="." method="_on_exit_button_pressed"]
 
 [editable path="SettingsContainer/WindowContainer/ResolutionSelector"]

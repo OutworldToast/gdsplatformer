@@ -79,6 +79,14 @@ func _on_vsync_button_toggled(toggled_on: bool) -> void:
 	print("VSync: %s" % DisplayServer.window_get_vsync_mode())
 
 
+func _on_remap_button_selected() -> void:
+	for child in get_tree().get_nodes_in_group("remap_buttons"):
+		if child is RemapButton:
+			var button = child as RemapButton
+			button.set_button_text()
+			button.set_process_unhandled_input(false)
+
+
 ## exit logic here would make more sense, but this would probably use a generic Menu class
 ## for now, this logic will stay in main
 # func _process(_delta: float) -> void:

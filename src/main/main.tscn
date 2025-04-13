@@ -110,3 +110,5 @@ visible = false
 
 [editable path="CanvasLayer/IngameUI"]
 [editable path="CanvasLayer/SettingsMenu"]
+[editable path="CanvasLayer/SettingsMenu/SettingsContainer/WindowContainer/ResolutionSelector"]
+[editable path="CanvasLayer/SettingsMenu/SettingsContainer/WindowContainer/WindowSelector"]

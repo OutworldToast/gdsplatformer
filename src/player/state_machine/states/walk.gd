@@ -8,7 +8,7 @@ func physics_update(_delta):
 
     super(_delta)
 
-    if Input.is_key_pressed(KEY_SHIFT):
+    if Input.is_action_pressed("run"):
         request_state.emit("run")
 
     if not get_input_direction():
