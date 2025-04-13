@@ -5,7 +5,7 @@ extends Node2D
 
 @onready var level_select_menu: Control = $CanvasLayer/LevelSelectMenu
 
-var level_button_prefab: PackedScene = preload("res://src/main/UI/level_button.tscn")
+var level_button_prefab: PackedScene = preload("uid://cyi1wfs0kgb1j")
 
 var levels: Dictionary[String, PackedScene] = {
 	"level_1" = preload("uid://yan650d4vg3r"),

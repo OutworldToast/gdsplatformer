@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://qbp0xeyle5or"]
 
-[ext_resource type="Script" uid="uid://ck3oo3grkmxbx" path="res://src/main/UI/volume_slider.gd" id="1_kj16g"]
+[ext_resource type="Script" uid="uid://ck3oo3grkmxbx" path="res://src/main/UI/elements/volume_slider.gd" id="1_kj16g"]
 
 [node name="VolumeSlider" type="VBoxContainer"]
 offset_right = 59.0

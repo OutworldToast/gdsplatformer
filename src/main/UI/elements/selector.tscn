@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvckrscyldki3"]
+
+[ext_resource type="Script" uid="uid://cc8d6mhpu4u3u" path="res://src/main/UI/elements/selector.gd" id="1_7hk26"]
+
+[node name="SelectorElement" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_7hk26")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+text = "SelectorTitle"
+horizontal_alignment = 1
+
+[node name="Selector" type="OptionButton" parent="."]
+layout_mode = 2
