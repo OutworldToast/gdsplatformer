@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://by016eiu6vxwd"]
+[gd_scene load_steps=36 format=3 uid="uid://by016eiu6vxwd"]
 
 [ext_resource type="Script" uid="uid://drwnkdqv6qlq2" path="res://src/player/player.gd" id="1_blpm4"]
 [ext_resource type="Texture2D" uid="uid://dqigaoljdkonm" path="res://assets/dino_spritesheet.png" id="1_qnd6i"]
+[ext_resource type="AudioStream" uid="uid://dc066tjs2n3j5" path="res://sounds/cartoon_bite_sound_effect.mp3" id="3_mf2ua"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o822w"]
 atlas = ExtResource("1_qnd6i")
@@ -298,5 +299,10 @@ offset_bottom = -6.0
 text = "AIRBORNE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BiteSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mf2ua")
+volume_db = -15.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Mouth" to="." method="_on_mouth_area_entered"]

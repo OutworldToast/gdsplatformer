@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://yan650d4vg3r"]
+[gd_scene load_steps=10 format=3 uid="uid://yan650d4vg3r"]
 
 [ext_resource type="Script" uid="uid://hs3vjnihdc70" path="res://src/levels/level.gd" id="1_mbxti"]
 [ext_resource type="Script" uid="uid://cnl06hgj5red1" path="res://src/levels/camera_2d.gd" id="1_olomi"]
 [ext_resource type="PackedScene" uid="uid://by016eiu6vxwd" path="res://src/player/player.tscn" id="1_ue7o4"]
 [ext_resource type="PackedScene" uid="uid://cxyd2hpc21kx6" path="res://src/surfaces/surface.tscn" id="2_a8icf"]
+[ext_resource type="AudioStream" uid="uid://vcuy5w4jytvu" path="res://sounds/Casino_floorV2.mp3" id="2_frwdw"]
 [ext_resource type="PackedScene" uid="uid://dptqqwn64eo1x" path="res://src/levels/Food.tscn" id="3_gsqgy"]
 [ext_resource type="PackedScene" uid="uid://ce5dmnccfrvd8" path="res://src/surfaces/wall.tscn" id="6_1brxq"]
 [ext_resource type="PackedScene" uid="uid://c1tgs73c50bh5" path="res://src/surfaces/surface_block.tscn" id="7_plupk"]
@@ -13,6 +14,13 @@
 [node name="Level" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_mbxti")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_frwdw")
+volume_db = -18.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 position = Vector2(160, 88)

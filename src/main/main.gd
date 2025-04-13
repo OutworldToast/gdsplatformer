@@ -83,6 +83,7 @@ func show_level_select_menu() -> void:
 #region Signals
 
 ## having all these in a single script is not a good idea
+## really should be in some kind of UI manager or something
 
 func _on_player_died() -> void:
 	## show_level_select_menu will make the ingame_ui invisible
@@ -122,8 +123,11 @@ func _on_retry_button_pressed() -> void:
 	reload_level()
 
 func _on_settings_button_pressed() -> void:
-	ingame_ui.visible = false
-	$CanvasLayer/MainMenu.visible = false
+	if $CanvasLayer/MainMenu.visible:
+		$CanvasLayer/MainMenu.visible = false
+	else:
+		ingame_ui.visible = false
+
 	$CanvasLayer/SettingsMenu.visible = true
 
 func _on_continue_button_pressed() -> void:
@@ -133,6 +137,12 @@ func _on_continue_button_pressed() -> void:
 func _on_start_button_pressed() -> void:
 	$CanvasLayer/MainMenu.visible = false
 	select_level("level_1")
+
+func _on_return_button_pressed() -> void:
+	if current_level:
+		ingame_ui.visible = true
+	else:
+		$CanvasLayer/MainMenu.visible = true
 
 
 #endregion Signals
@@ -145,10 +155,14 @@ func _process(_delta: float) -> void:
 	# only handle input if not in main menu
 	if Input.is_action_just_pressed("pause") and not $CanvasLayer/MainMenu.visible:
 
+		## this logic should really be in the individual menus
 		# remove overlay if there is one
 		if $CanvasLayer/SettingsMenu.visible:
 			$CanvasLayer/SettingsMenu.visible = false
 		elif $CanvasLayer/LevelSelectMenu.visible and current_level:
 			$CanvasLayer/LevelSelectMenu.visible = false
+		elif $CanvasLayer/SettingsMenu.visible:
+			$CanvasLayer/SettingsMenu.visible = false
+
 
 		ingame_ui.handle_pause()

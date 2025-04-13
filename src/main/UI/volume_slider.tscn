@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://qbp0xeyle5or"]
+
+[ext_resource type="Script" uid="uid://ck3oo3grkmxbx" path="res://src/main/UI/volume_slider.gd" id="1_kj16g"]
+
+[node name="VolumeSlider" type="VBoxContainer"]
+offset_right = 59.0
+offset_bottom = 338.0
+script = ExtResource("1_kj16g")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Volume
+100"
+horizontal_alignment = 1
+
+[node name="VSlider" type="VSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+value = 50.0
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+
+[connection signal="value_changed" from="VSlider" to="." method="_on_volume_slider_value_changed"]

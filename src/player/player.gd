@@ -6,6 +6,7 @@ signal eaten_food
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_label: Label = $StateLabel
 
+@onready var bite_sound: AudioStreamPlayer = $BiteSound
 # timers created in player, as states are not nodes 
 var detach_buffer_timer: Timer = Timer.new()
 var wall_jump_hang_timer: Timer = Timer.new()
@@ -63,6 +64,7 @@ func _on_mouth_area_entered(area: Area2D) -> void:
 	if area.is_in_group("eatable"):
 		area.queue_free()
 		eaten_food.emit()
+		bite_sound.play()
 
 func _on_state_updated(new_state_name: String) -> void:
 	state_label.text = new_state_name.to_upper()

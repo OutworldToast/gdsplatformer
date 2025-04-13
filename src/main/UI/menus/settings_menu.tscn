@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcxcvlpyy1t3"]
+
+[ext_resource type="PackedScene" uid="uid://qbp0xeyle5or" path="res://src/main/UI/volume_slider.tscn" id="1_1tw7w"]
+[ext_resource type="Script" uid="uid://7djtmsb4spm0" path="res://src/main/UI/menus/settings_menu.gd" id="1_bxmrt"]
+
+[node name="SettingsMenu" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+script = ExtResource("1_bxmrt")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="SettingsContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="ResolutionContainer" type="VBoxContainer" parent="SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VolumeContainer" type="HBoxContainer" parent="SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="MasterVolumeSlider" parent="SettingsContainer/VolumeContainer" instance=ExtResource("1_1tw7w")]
+layout_mode = 2
+size_flags_horizontal = 3
+slider_description = "Master"
+
+[node name="MusicVolumeSlider" parent="SettingsContainer/VolumeContainer" instance=ExtResource("1_1tw7w")]
+layout_mode = 2
+size_flags_horizontal = 3
+bus_name = "Music"
+slider_description = "Music"
+
+[node name="SFXVolumeSlider" parent="SettingsContainer/VolumeContainer" instance=ExtResource("1_1tw7w")]
+layout_mode = 2
+size_flags_horizontal = 3
+bus_name = "SFX"
+slider_description = "SFX"
+
+[node name="EmptyContainer" type="VBoxContainer" parent="SettingsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BottomButtonsContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="ReturnButton" type="Button" parent="BottomButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Return"
+
+[connection signal="pressed" from="BottomButtonsContainer/ReturnButton" to="." method="_on_exit_button_pressed"]
