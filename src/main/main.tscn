@@ -1,11 +1,58 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjc2feiarbaf8"]
 
 [ext_resource type="Script" uid="uid://c2pcbb0w0atl4" path="res://src/main/main.gd" id="1_5q4o7"]
-[ext_resource type="PackedScene" uid="uid://cqjktgya8j3wr" path="res://src/main/ui.tscn" id="2_gh0ne"]
+[ext_resource type="PackedScene" uid="uid://cqjktgya8j3wr" path="res://src/main/UI/ui.tscn" id="2_gh0ne"]
 
 [node name="Main" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_5q4o7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" parent="CanvasLayer" instance=ExtResource("2_gh0ne")]
+[node name="IngameUI" parent="CanvasLayer" instance=ExtResource("2_gh0ne")]
+visible = false
+
+[node name="MainMenu" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -110.0
+offset_right = 66.5
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][rainbow][wave]Platforming[/wave][/rainbow][/center]"
+
+[node name="LevelSelectMenu" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -63.0
+offset_right = 70.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/LevelSelectMenu"]
+layout_mode = 2
+text = "Select a level"
+horizontal_alignment = 1
+
+[node name="Levels" type="GridContainer" parent="CanvasLayer/LevelSelectMenu"]
+layout_mode = 2
+columns = 2
+
+[connection signal="pressed" from="CanvasLayer/IngameUI/Middle/PauseMenu/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+
+[editable path="CanvasLayer/IngameUI"]

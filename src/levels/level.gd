@@ -17,12 +17,10 @@ var food_eaten := 0:
 			win()
 
 func win() -> void:
-	print("You won!")
 	beaten.emit()
 	player.celebrate()
 
 func lose() -> void:
-	print("You lost!")
 	player_died.emit()
 
 func _ready() -> void:

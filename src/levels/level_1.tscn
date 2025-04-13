@@ -11,6 +11,7 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bb400"]
 
 [node name="Level" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_mbxti")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
@@ -55,10 +56,13 @@ position = Vector2(160, 210)
 position = Vector2(472, 649)
 
 [node name="Wall" parent="Surfaces" instance=ExtResource("6_1brxq")]
-position = Vector2(912, 150)
+position = Vector2(911, 147)
 
 [node name="Wall2" parent="Surfaces" instance=ExtResource("6_1brxq")]
 position = Vector2(94, 703)
+
+[node name="Wall3" parent="Surfaces" instance=ExtResource("6_1brxq")]
+position = Vector2(767, 1043)
 
 [node name="SurfaceBlock" parent="Surfaces" instance=ExtResource("7_plupk")]
 position = Vector2(-513, 341)
@@ -70,13 +74,22 @@ position = Vector2(407, 1292)
 position = Vector2(-202, 1288)
 
 [node name="SurfaceBlock3" parent="Surfaces" instance=ExtResource("7_plupk")]
-position = Vector2(765, -215)
+position = Vector2(770, -220)
 
 [node name="SurfaceBlock2" parent="Surfaces" instance=ExtResource("7_plupk")]
 position = Vector2(-193, 439)
 
+[node name="SurfaceBlock6" parent="Surfaces" instance=ExtResource("7_plupk")]
+position = Vector2(1245, 870)
+
+[node name="SurfaceBlock7" parent="Surfaces" instance=ExtResource("7_plupk")]
+position = Vector2(1048, 1407)
+
+[node name="SurfaceBlock8" parent="Surfaces" instance=ExtResource("7_plupk")]
+position = Vector2(906, 1731)
+
 [node name="Boundary" type="Area2D" parent="." groups=["boundaries"]]
-position = Vector2(104, 1514)
+position = Vector2(105, 1711)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]

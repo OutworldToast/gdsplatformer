@@ -14,4 +14,5 @@ shape = SubResource("RectangleShape2D_1jvay")
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-76.7, -206)
 scale = Vector2(0.4625, 1.00735)
+color = Color(0.901961, 0.717647, 0.290196, 1)
 polygon = PackedVector2Array(328, 136, 8, 136, 8, 202, 8, 272, 328, 272, 328, 203.699)

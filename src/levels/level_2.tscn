@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd7r0rjngqs3k"]
+
+[ext_resource type="PackedScene" uid="uid://yan650d4vg3r" path="res://src/levels/level_1.tscn" id="1_jr4dd"]
+[ext_resource type="PackedScene" uid="uid://c1tgs73c50bh5" path="res://src/surfaces/surface_block.tscn" id="2_hclg5"]
+
+[node name="Level" instance=ExtResource("1_jr4dd")]
+
+[node name="Player" parent="." index="1"]
+position = Vector2(784, -319)
+
+[node name="Food" parent="Foodstuffs" index="0"]
+position = Vector2(707, -98)
+
+[node name="Food5" parent="Foodstuffs" index="1"]
+position = Vector2(1379, -304)
+
+[node name="Food6" parent="Foodstuffs" index="2"]
+position = Vector2(1158, -88)
+
+[node name="Food7" parent="Foodstuffs" index="3"]
+position = Vector2(1052, 675)
+
+[node name="Food2" parent="Foodstuffs" index="4"]
+position = Vector2(853, -383)
+
+[node name="Food3" parent="Foodstuffs" index="5"]
+position = Vector2(909, 1408)
+
+[node name="Food4" parent="Foodstuffs" index="6"]
+position = Vector2(1056, 1260)
+
+[node name="SurfaceBlock9" parent="Surfaces" index="12" instance=ExtResource("2_hclg5")]
+position = Vector2(1376, -2)
