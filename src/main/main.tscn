@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjc2feiarbaf8"]
+[gd_scene load_steps=4 format=3 uid="uid://cjc2feiarbaf8"]
 
 [ext_resource type="Script" uid="uid://c2pcbb0w0atl4" path="res://src/main/main.gd" id="1_5q4o7"]
 [ext_resource type="PackedScene" uid="uid://cqjktgya8j3wr" path="res://src/main/UI/ui.tscn" id="2_gh0ne"]
+
+[sub_resource type="GDScript" id="GDScript_3s6yk"]
+script/source = "extends VBoxContainer
+"
 
 [node name="Main" type="Node2D"]
 process_mode = 3
@@ -13,7 +17,6 @@ script = ExtResource("1_5q4o7")
 visible = false
 
 [node name="MainMenu" type="VBoxContainer" parent="CanvasLayer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -26,12 +29,38 @@ offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+text = "Platforming"
+horizontal_alignment = 1
+
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MainMenu"]
 layout_mode = 2
 bbcode_enabled = true
 text = "[center][rainbow][wave]Platforming[/wave][/rainbow][/center]"
 
+[node name="StartButton" type="Button" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+text = "Start"
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+text = "Continue"
+
+[node name="LevelSelectButton" type="Button" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+text = "Level Select"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+text = "Exit to Desktop"
+
 [node name="LevelSelectMenu" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -43,16 +72,54 @@ offset_right = 70.0
 offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_3s6yk")
 
 [node name="Label" type="Label" parent="CanvasLayer/LevelSelectMenu"]
 layout_mode = 2
 text = "Select a level"
 horizontal_alignment = 1
 
+[node name="RetryButton" type="Button" parent="CanvasLayer/LevelSelectMenu"]
+layout_mode = 2
+text = "Try Again"
+
 [node name="Levels" type="GridContainer" parent="CanvasLayer/LevelSelectMenu"]
 layout_mode = 2
 columns = 2
 
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/LevelSelectMenu"]
+layout_mode = 2
+text = "Return to Main Menu"
+
+[node name="SettingsMenu" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.5
+offset_top = -110.0
+offset_right = 80.5
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsMenu"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/IngameUI/Middle/PauseMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/IngameUI/Middle/PauseMenu/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/IngameUI/Middle/PauseMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/IngameUI/Middle/PauseMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelectMenu/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelectMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 
 [editable path="CanvasLayer/IngameUI"]

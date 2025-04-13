@@ -34,3 +34,6 @@ func set_victory_label(player_won: bool) -> void:
 		victory_label.text = "You died..."
 
 	victory_label.visible = true
+
+func _on_resume_button_pressed() -> void:
+	unpause()
